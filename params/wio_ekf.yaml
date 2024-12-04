@@ -45,16 +45,6 @@ ekf_filter_node:
         odom0_queue_size: 10
         odom0_nodelay: true
 
-        ## ZED VO
-        # odom1: /zed/zed_node/odom
-        # odom1_config: [false, false,  false,
-        #               false, false, false,
-        #               true, true, false,
-        #               false, false, true,
-        #               false, false, false]
-        # odom1_queue_size: 10
-        # odom1_nodelay: true
-
         ## zed imu
         imu0: /zed/zed_node/imu/data
         # imu0_config: [false, false, false,
