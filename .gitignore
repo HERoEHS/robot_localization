@@ -5,3 +5,5 @@ doc/html
 *.cproject
 *.project
 *.settings
+.omc/
+.claude-flow/

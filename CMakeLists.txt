@@ -33,6 +33,8 @@ find_package(tf2_ros REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED)
 find_package(yaml_cpp_vendor REQUIRED)
+find_package(yaml-cpp REQUIRED)  # explicit: ament_target_dependencies(yaml_cpp_vendor) alone
+                                 # does not link libyaml-cpp on Jazzy -> undefined YAML refs
 
 # Geographiclib installs FindGeographicLib.cmake to this non-standard location
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "/usr/share/cmake/geographiclib/")
@@ -101,6 +103,7 @@ target_link_libraries(
   ${library_name}
   ${GeographicLib_LIBRARIES}
   ${EIGEN3_LIBRARIES}
+  yaml-cpp
 )
 
 ament_target_dependencies(
