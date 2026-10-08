@@ -24,12 +24,14 @@ import launch.actions
 from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
+    # 세대 폴더 — ALICE_GENERATION=alice_m2 면 params/alice_m2/, 그 외(빈 값 포함) params/alice_m1/ (파일 이름은 같다)
+    gen = 'alice_m2' if os.environ.get('ALICE_GENERATION', '').strip() == 'alice_m2' else 'alice_m1'
     return LaunchDescription([
         launch_ros.actions.Node(
             package='robot_localization',
             executable='ekf_node',
             name='ekf_filter_node',
             output='screen',
-            parameters=[os.path.join(get_package_share_directory("robot_localization"), 'params', 'wio_ekf.yaml')],
+            parameters=[os.path.join(get_package_share_directory("robot_localization"), 'params', gen, 'wio_ekf.yaml')],
            ),
 ])
