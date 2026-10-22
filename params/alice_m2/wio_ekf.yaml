@@ -54,11 +54,15 @@ ekf_filter_node:
         #               false, false, false,
         #               false, false, true,
         #               true, false, false]
+        # ax(13) off on M2: the IMU sits at x = -0.10 (alice_m2 m2_sensors.xacro) and robot_localization does not
+        # remove the lever-arm term from accelerations, so every turn adds a one-sided ax. The wheel odom already
+        # observes vx at 50 Hz. Isaac A/B (isaac_sim_localization config/alice_m2/ekf_imu_no_accel.yaml): with a
+        # 0.2/0.1 m offset ax on drifted 2.52 cm / 12 m, ax off 0.59 cm. M1 keeps ax (alice_m1/wio_ekf.yaml).
         imu0_config: [false, false, false,
                       false,  false,  false,
                       false, false, false,
                       false,  false,  true,
-                      true,  false,  false]
+                      false, false,  false]
         imu0_nodelay: true
         imu0_differential: false
         imu0_relative: false
